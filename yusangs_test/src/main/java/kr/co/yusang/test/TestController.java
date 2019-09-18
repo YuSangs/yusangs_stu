@@ -20,12 +20,11 @@ public class TestController {
 	 * @param Map<String, Object>
 	 * @return ModelAndView
 	 * */
-	@RequestMapping("/test.do")
+	@RequestMapping("/testTwo.do")
 	public ModelAndView main(@RequestParam Map<String, Object> param) throws Exception {
 		ModelAndView mav = new ModelAndView("test");
 		
 		mav.addObject("list", service.selectMain(param));
 		return mav;
 	}
-	
 }
