@@ -5,7 +5,10 @@
 	
 	<mapper namespace="list" >
 		<select id="selectList" parameterType="map" resultType="map">
-			SELECT * FROM LIST_TBL
+			SELECT 
+				* 
+			FROM 
+				LIST_TBL
 		</select>
 		
 		<insert id="write" parameterType="map">
@@ -20,5 +23,32 @@
 		<insert id="insertFile" parameterType="map">
 			INSERT INTO FILE_TBL (ORI_FILE, STO_FILE, LIST_IDX)
 				VALUES (#{ori_file}, #{sto_file}, #{list_idx})
+		</insert>
+		
+		<select id="sangse" parameterType="map" resultType="map">
+			SELECT 
+				A.IDX, A.TITLE, A.CONTENT, A.REGDATE, B.STO_FILE
+			FROM 
+				LIST_TBL AS A
+				LEFT JOIN FILE_TBL B
+				ON A.IDX = B.LIST_IDX
+			WHERE 
+				A.IDX = #{idx}
+		</select>
+		
+		<select id="selectRepleList" parameterType="map" resultType="map">
+			SELECT
+				*
+			FROM 
+				REPLY_TBL
+			WHERE
+				LIST_IDX = #{list_idx}
+			ORDER BY 
+				IF(PARENT_IDX = 0, IDX, PARENT_IDX), IDX ASC;
+		</select>
+		
+		<insert id="insertReple" parameterType="map">
+			INSERT INTO REPLY_TBL (REPLY, USERID, LIST_IDX, PARENT_IDX, DEPTH)
+				VALUES (#{reply}, #{reply_id}, #{list_idx}, #{parent_idx}, #{depth})
 		</insert>
 	</mapper>

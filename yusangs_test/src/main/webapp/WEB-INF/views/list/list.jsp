@@ -16,10 +16,10 @@
 				<td>내용</td>
 				<td>작성일자</td>
 			</tr>
-			<c:forEach items="${list }" var="list">		
+			<c:forEach items="${list }" var="list">	
 				<tr>
 					<td>${list.IDX }</td>
-					<td><a onclick="sangse(${list.IDX });">${list.TITLE }</a></td>
+					<td><a href="#" onclick="sangse(${list.IDX });">${list.TITLE }</a></td>
 					<td>${list.CONTENT }</td>
 					<td>${list.REGDATE }</td>
 				</tr>
@@ -42,8 +42,5 @@
 			alert(msg);
 		}
 		
-// 		$("#sangse").click(function(){
-// 			location.href="/write.do";
-// 		});
 	</script>
 </html>

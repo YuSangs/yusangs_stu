@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -45,6 +46,31 @@ public class ListServiceImpl extends CommonDAO implements ListService{
 			}
 		}else {
 			msg = "글 등록 오류";
+		}
+		
+		return msg;
+	}
+
+	@Override
+	public Map<String, Object> sangse(Map<String, Object> param) throws Exception {
+		return super.select("list.sangse", param);
+	}
+
+	@Override
+	public JSONArray getRepleList(Map<String, Object> param) throws Exception {
+		
+		List<Map<String, Object>> repleList = super.list("list.selectRepleList", param);
+		
+		return new JSONArray(repleList);
+	}
+
+	@Override
+	public String repleOn(Map<String, Object> param) throws Exception {
+		String msg;
+		if(super.insert("list.insertReple", param) == 1) {
+			msg = "success";
+		}else {
+			msg = "false";
 		}
 		
 		return msg;

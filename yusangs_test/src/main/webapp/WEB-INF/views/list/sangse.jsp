@@ -12,32 +12,28 @@
 		<table style="border: 1px;">
 			<tr>
 				<td>번호</td>
-				<td>제목</td>
-				<td>내용</td>
-				<td>작성일자</td>
+				<td>${sangse.IDX }</td>
 			</tr>
-			<c:forEach items="${list }" var="list">		
-				<tr>
-					<td>${list.IDX }</td>
-					<td><a onclick="sangse(${list.IDX });">${list.TITLE }</a></td>
-					<td>${list.CONTENT }</td>
-					<td>${list.REGDATE }</td>
-				</tr>
-			</c:forEach>
-		</table>	
-		<input type="button" onclick="write();" value="글쓰기"/>
+			<tr>
+				<td>제목</td>
+				<td>${sangse.TITLE }</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>${sangse.CONTENT }</td>
+			</tr>
+			<tr>
+				<td>작성일자</td>
+				<td>${sangse.REGDATE }</td>
+			</tr>
+			<tr>
+				<td>첨부파일</td>
+				<td>${sangse.STO_FILE }</td>
+			</tr>
+		</table>
+		<%@ include file="../list/comment.jsp" %>
 	</body>
 	<script type="text/javascript">
-		function write(){
-			location.href="/writeForm.do";
-		}
-
-		function write(idx){
-			location.href="/sangse.do?idx="+idx;
-		}
-
-// 		$("#sangse").click(function(){
-// 			location.href="/write.do";
-// 		});
+		
 	</script>
 </html>

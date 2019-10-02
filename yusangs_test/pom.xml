@@ -64,6 +64,18 @@
 		    <artifactId>commons-fileupload</artifactId>
 		    <version>1.3.2</version>
 		</dependency>
+		<!-- json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180130</version>
+		</dependency>
+		<!-- jackson -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
 
 		<!-- db 설정 및 mybatis, mysql, db 로그 -->
 		<!-- log4jdbc -->
